@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Kosmetologiya — Kavsar Clinic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14302B;
+    --ivory:#F7F3EC;
+    --green:#1F5E52;
+    --green-dark:#123B33;
+    --gold:#D8B76A;
+    --gold-soft:#F3E8CC;
+    --soft:#EAF0EC;
+    --line:rgba(20,48,43,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{overflow-x:hidden; width:100%;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--ivory); color:var(--ink); font-family:'Sora',sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-weight:700; line-height:1.15; letter-spacing:-0.01em;}
+  a{color:inherit;}
+  img,iframe{display:block; max-width:100%;}
+  .wrap{max-width:1000px; margin:0 auto; padding:0 16px; width:100%;}
+
+  /* HEADER */
+  header{position:sticky; top:0; z-index:50; background:rgba(247,243,236,0.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .header-inner{display:flex; align-items:center; justify-content:space-between; padding-top:12px; padding-bottom:12px;}
+  .logo{font-weight:800; font-size:18px;}
+  .logo span{font-weight:500; opacity:0.6; font-size:13px; margin-left:6px;}
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--green); color:#fff; padding:12px 20px; border-radius:100px; font-weight:700; font-size:14px; text-decoration:none; border:none; cursor:pointer; font-family:inherit; transition:transform .15s, background .15s;}
+  .btn:hover{background:var(--green-dark); transform:translateY(-1px);}
+  .btn-gold{background:var(--gold); color:var(--green-dark);}
+  .btn-gold:hover{background:#c7a558;}
+  .btn-sm{padding:10px 16px; font-size:13px;}
+
+  section{padding:44px 0;}
+  .eyebrow{display:inline-block; font-size:12.5px; font-weight:800; color:var(--green); background:var(--soft); padding:7px 14px; border-radius:100px; margin-bottom:14px;}
+  .sec-title{font-size:clamp(24px,5vw,32px); margin-bottom:8px;}
+  .sec-sub{font-size:15px; opacity:0.72; max-width:52ch;}
+
+  /* 1. AKSIYALAR — ixcham */
+  .hero{padding:18px 0 22px;}
+  .hero .eyebrow{margin-bottom:10px; font-size:12px; padding:6px 12px;}
+  .hero h1{font-size:clamp(23px,6vw,34px); max-width:22ch; margin-bottom:14px;}
+  .offers{display:grid; grid-template-columns:1fr; gap:10px;}
+  @media(min-width:760px){ .offers{grid-template-columns:1fr 1fr;} }
+  .offer{display:block; text-decoration:none; border-radius:16px; padding:14px 16px; transition:transform .15s;}
+  .offer:active{transform:scale(0.99);}
+  .offer-free{background:var(--green-dark); color:var(--ivory);}
+  .offer-promo{background:#fff; border:1.5px solid var(--gold);}
+  .offer-top{display:flex; justify-content:space-between; align-items:flex-start; gap:12px;}
+  .offer-tag{display:inline-block; font-size:10.5px; font-weight:800; padding:4px 9px; border-radius:100px; margin-bottom:6px; letter-spacing:0.03em;}
+  .offer-free .offer-tag{background:var(--gold); color:var(--green-dark);}
+  .offer-promo .offer-tag{background:var(--gold-soft); color:#7A5B12;}
+  .offer h2{font-size:15.5px; line-height:1.3;}
+  .offer-free h2{color:#fff;}
+  .offer-price{font-size:22px; font-weight:800; letter-spacing:-0.02em; white-space:nowrap; text-align:right; line-height:1.1;}
+  .offer-price small{display:block; font-size:11px; font-weight:600; opacity:0.7; letter-spacing:0;}
+  .offer-free .offer-price{color:var(--gold);}
+  .offer-promo .offer-price{color:var(--green-dark);}
+  .offer-desc{font-size:12.5px; opacity:0.75; margin-top:6px;}
+  .offer-cta{display:inline-block; margin-top:8px; font-size:12.5px; font-weight:800;}
+  .offer-free .offer-cta{color:var(--gold);}
+  .offer-promo .offer-cta{color:var(--green);}
+  .deadline{margin-top:10px; display:flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700;}
+  .deadline .dot{width:8px; height:8px; border-radius:50%; background:#C2492F; flex:none; box-shadow:0 0 0 3px rgba(194,73,47,0.15);}
+
+  .doc-strip{display:flex; align-items:center; gap:12px; margin:0 0 16px;}
+  .doc-strip img{width:64px; height:64px; border-radius:50%; background:linear-gradient(160deg,var(--green),var(--green-dark)); object-fit:cover; object-position:center; flex:none; border:3px solid #fff; box-shadow:0 2px 10px rgba(20,48,43,0.15);}
+  .doc-strip b{display:block; font-size:15px;}
+  .doc-strip span{font-size:12.5px; opacity:0.65;}
+  .who{display:none; gap:8px; margin:-2px 0 12px 32px;}
+  .who.show{display:flex;}
+  .who button{flex:1; padding:10px 8px; border-radius:10px; border:1.5px solid var(--line); background:#fff; font-family:inherit; font-size:13px; font-weight:700; color:var(--ink); cursor:pointer;}
+  .who button.active{border-color:var(--green); background:var(--green); color:#fff;}
+
+  /* ===== HERO (rasmli) ===== */
+  .photo-hero{position:relative; overflow:hidden; height:min(72svh,600px); min-height:520px;
+    background:radial-gradient(120% 70% at 70% 30%, rgba(216,183,106,0.28) 0%, rgba(216,183,106,0) 55%),
+               linear-gradient(165deg,#2A7464 0%,var(--green) 45%,var(--green-dark) 100%);}
+  .photo-hero::after{content:""; position:absolute; inset:0; background:repeating-linear-gradient(135deg,rgba(255,255,255,0.035) 0 2px,transparent 2px 14px); pointer-events:none;}
+  .photo-hero .doc-img{position:absolute; bottom:0; left:50%; transform:translateX(-30%); height:92%; width:auto; max-width:none; object-fit:contain; object-position:bottom; z-index:1; filter:drop-shadow(0 10px 30px rgba(0,0,0,0.25));}
+  .hero-badge{position:absolute; top:18px; left:max(16px, calc((100% - 1000px)/2 + 16px)); z-index:2; display:flex; align-items:center; gap:10px;
+    background:rgba(247,243,236,0.96); border-radius:16px; padding:7px 14px 7px 7px; box-shadow:0 6px 20px rgba(0,0,0,0.16);}
+  .hero-badge .exp{display:flex; align-items:center; gap:6px; background:linear-gradient(140deg,var(--green) 0%,var(--green-dark) 100%); color:var(--gold); border-radius:11px; padding:7px 10px 7px 11px;}
+  .hero-badge .exp b{font-size:26px; font-weight:800; line-height:1; letter-spacing:-0.03em;}
+  .hero-badge .exp span{font-size:10px; font-weight:700; line-height:1.15; color:rgba(247,243,236,0.85); text-transform:uppercase; letter-spacing:0.04em;}
+  .hero-badge .who-doc b{display:block; font-size:14.5px; line-height:1.2;}
+  .hero-badge .who-doc span{font-size:12px; opacity:0.65; font-weight:600;}
+  .hero-bottom{position:absolute; left:max(16px, calc((100% - 1000px)/2 + 16px)); right:16px; bottom:18px; z-index:3; max-width:560px;}
+  .hero-banner{background:linear-gradient(100deg,rgba(18,59,51,0.96) 0%,rgba(31,94,82,0.93) 55%,rgba(122,91,18,0.88) 100%);
+    border-radius:16px; padding:14px 18px; color:#fff; backdrop-filter:blur(4px); box-shadow:0 8px 24px rgba(0,0,0,0.25);}
+  .hero-banner h1{font-size:clamp(21px,5.6vw,30px); line-height:1.12; text-transform:uppercase; letter-spacing:-0.005em; font-weight:800;}
+  .hero-banner h1 em{font-style:normal; color:var(--gold);}
+  .hero-cta{display:inline-flex; flex:none; background:var(--gold); color:var(--green-dark); font-weight:800; font-size:15px; text-transform:uppercase; letter-spacing:0.02em; padding:15px 26px; border-radius:100px; text-decoration:none; box-shadow:0 6px 18px rgba(0,0,0,0.25);}
+  .hero{padding-top:20px;}
+  .slides{position:relative; min-height:166px;}
+  .slide{position:absolute; inset:0 0 auto 0; opacity:0; transform:translateX(16px); transition:opacity .45s ease, transform .45s ease; pointer-events:none;}
+  .slide.on{opacity:1; transform:none; pointer-events:auto; position:relative;}
+  .slide-tag{display:inline-block; font-size:11px; font-weight:800; letter-spacing:0.04em; padding:5px 10px; border-radius:100px; background:var(--gold); color:var(--green-dark); margin-bottom:8px;}
+  .slide-price{display:flex; flex-wrap:wrap; align-items:baseline; column-gap:10px; row-gap:0; margin-top:6px; color:var(--gold); font-weight:800; font-size:clamp(24px,6vw,30px); letter-spacing:-0.02em;}
+  .slide-price .pv{white-space:nowrap;}
+  .slide-price small{font-size:12.5px; font-weight:600; color:rgba(255,255,255,0.8); letter-spacing:0;}
+  .slider-foot{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:12px;}
+  .dots{display:flex; gap:6px;}
+  .dots button{width:22px; height:5px; border-radius:5px; border:none; background:rgba(255,255,255,0.45); padding:0; cursor:pointer; transition:width .3s, background .3s;}
+  .dots button.on{width:34px; background:#fff;}
+  .deadline-hero{position:absolute; left:max(16px, calc((100% - 1000px)/2 + 16px)); top:88px; z-index:2; display:flex; align-items:center; gap:7px; background:rgba(18,59,51,0.75); color:#fff; font-size:11.5px; font-weight:700; padding:7px 11px; border-radius:100px;}
+  .deadline-hero .dot{width:7px; height:7px; border-radius:50%; background:#FF7A5C; box-shadow:0 0 0 3px rgba(255,122,92,0.25);}
+
+  .ph-face{position:absolute; top:110px; left:50%; transform:translateX(-50%); width:min(56%,260px); aspect-ratio:1/1; z-index:1;
+    border-radius:50%; background:linear-gradient(170deg,rgba(247,243,236,0.16),rgba(247,243,236,0.04)); border:1.5px solid rgba(216,183,106,0.35);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--gold); text-align:center;}
+  .ph-face b{font-size:clamp(64px,18vw,110px); font-weight:800; letter-spacing:-0.04em; line-height:1;}
+  .ph-face span{font-size:12px; font-weight:600; color:rgba(247,243,236,0.6); margin-top:8px;}
+  /* ===== NARXLAR ===== */
+  .prices{padding:36px 0 8px;}
+  .price-list{background:#fff; border-radius:20px; border:1px solid var(--line); padding:6px 18px; max-width:640px;}
+  .pr{display:flex; justify-content:space-between; gap:14px; align-items:flex-start; padding:14px 0; border-bottom:1px solid var(--line);}
+  .pr:last-child{border-bottom:none;}
+  .pr b{display:block; font-size:15px;}
+  .pr small{font-size:12.5px; opacity:0.6;}
+  .pr .p{font-weight:800; color:var(--green-dark); white-space:nowrap; text-align:right; font-size:14.5px;}
+  .loyal{margin-top:14px; max-width:640px; background:linear-gradient(110deg,var(--green-dark),var(--green)); color:#fff; border-radius:18px; padding:16px 18px; display:flex; gap:14px; align-items:center;}
+  .loyal .n{flex:none; width:58px; height:58px; border-radius:16px; background:var(--gold); color:var(--green-dark); display:flex; flex-direction:column; align-items:center; justify-content:center; font-weight:800; font-size:24px; line-height:1;}
+  .loyal .n small{font-size:9px; font-weight:700; letter-spacing:0.04em;}
+  .loyal b{display:block; font-size:15px; margin-bottom:2px;}
+  .loyal span{font-size:13px; opacity:0.85;}
+
+  /* ===== PASTKI QOTIB TURADIGAN PANEL ===== */
+  body{padding-bottom:96px;}
+  .bottom-bar{position:fixed; left:0; right:0; bottom:0; z-index:60; background:rgba(255,255,255,0.97); backdrop-filter:blur(10px);
+    border-top:1px solid var(--line); padding:12px 16px calc(12px + env(safe-area-inset-bottom)); display:flex; align-items:center; gap:12px;}
+  @media(min-width:760px){ .bottom-bar{left:50%; right:auto; transform:translateX(-50%); width:560px; bottom:16px; border:1px solid var(--line); border-radius:100px; padding:10px 12px; box-shadow:0 8px 30px rgba(20,48,43,0.15);} }
+  .bb-round{width:54px; height:54px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; text-decoration:none; position:relative;}
+  .bb-phone{border:1.5px solid var(--line); background:#fff; color:var(--green);}
+  .bb-main{flex:1; height:54px; border-radius:100px; display:flex; align-items:center; justify-content:center; text-decoration:none;
+    background:linear-gradient(100deg,var(--green-dark) 0%,var(--green) 55%,#8A6A1F 100%); color:#fff; font-weight:800; font-size:16px;}
+  .bb-ai{background:linear-gradient(140deg,var(--green) 0%,#8A6A1F 100%); color:#fff;}
+  .bb-dot{position:absolute; top:-3px; right:-3px; width:20px; height:20px; border-radius:50%; background:var(--gold); color:var(--green-dark); font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; border:2px solid #fff;}
+  .ai-bubble{position:fixed; right:14px; bottom:calc(84px + env(safe-area-inset-bottom)); z-index:61; background:#fff; border-radius:100px; padding:8px 12px 8px 8px;
+    display:flex; align-items:center; gap:8px; box-shadow:0 6px 22px rgba(20,48,43,0.18); font-weight:700; font-size:14px; text-decoration:none; color:var(--ink);
+    transition:opacity .3s, transform .3s;}
+  .ai-bubble::after{content:""; position:absolute; right:26px; bottom:-6px; width:12px; height:12px; background:#fff; transform:rotate(45deg);}
+  .ai-bubble .ai-ico{width:30px; height:30px; border-radius:50%; background:var(--soft); display:flex; align-items:center; justify-content:center; font-size:15px;}
+  .ai-bubble.hide{opacity:0; transform:translateY(8px); pointer-events:none;}
+  .ai-bubble .x{margin-left:4px; opacity:0.4; font-size:16px; padding:0 2px; cursor:pointer;}
+
+  /* 2. FORMA */
+  .form-section{background:var(--soft); padding:24px 0 40px; scroll-margin-top:56px;}
+  .form-card{background:#fff; border-radius:22px; padding:24px 20px; border:1px solid var(--line); max-width:560px;}
+  .form-card h2{font-size:22px; margin-bottom:6px;}
+  .form-card .sec-sub{margin-bottom:20px; font-size:14px;}
+  .opt-label{font-size:12.5px; font-weight:800; opacity:0.6; margin-bottom:10px; text-transform:uppercase; letter-spacing:0.04em;}
+  .opts{display:grid; gap:10px; margin-bottom:20px;}
+  .opt{display:flex; gap:12px; align-items:flex-start; border:1.5px solid var(--line); border-radius:14px; padding:14px; cursor:pointer; background:var(--ivory); transition:border-color .15s, background .15s;}
+  .opt input{display:none;}
+  .opt .radio{width:20px; height:20px; border-radius:50%; border:2px solid var(--line); flex:none; margin-top:1px; position:relative; transition:border-color .15s;}
+  .opt.active{border-color:var(--green); background:var(--soft);}
+  .opt.active .radio{border-color:var(--green);}
+  .opt.active .radio::after{content:""; position:absolute; inset:3px; border-radius:50%; background:var(--green);}
+  .opt-title{font-weight:700; font-size:14.5px;}
+  .opt-desc{font-size:12.5px; opacity:0.65; margin-top:2px;}
+  .field{width:100%; padding:14px; border-radius:12px; border:1.5px solid var(--line); font-size:16px; font-family:inherit; margin-bottom:12px; background:var(--ivory); color:var(--ink);}
+  .field:focus{outline:none; border-color:var(--green);}
+  .submit{width:100%; padding:15px; font-size:15px; margin-top:4px;}
+  .form-status{margin-top:10px; font-size:13px; font-weight:700;}
+  .form-status.err{color:#B3452F;}
+  .privacy{font-size:12px; opacity:0.55; margin-top:12px; text-align:center;}
+  .form-success{display:none; text-align:center; padding:12px 0;}
+  .form-success.show{display:block;}
+  .form-success .check{width:56px; height:56px; border-radius:50%; background:var(--soft); color:var(--green); font-size:26px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 14px;}
+  .form-success h3{font-size:19px; margin-bottom:8px;}
+  .form-success p{font-size:14px; opacity:0.72; margin-bottom:18px;}
+
+  /* 3. SHIFOKOR */
+  .doctor{display:grid; grid-template-columns:1fr; gap:24px; align-items:center;}
+  @media(min-width:760px){ .doctor{grid-template-columns:340px 1fr; gap:40px;} .doctor-photo{aspect-ratio:4/5;} }
+  .doctor-photo{aspect-ratio:1/1; border-radius:22px; overflow:hidden; background:linear-gradient(160deg,var(--green) 0%,var(--green-dark) 100%); position:relative; max-width:380px;}
+  .doctor-photo img{width:100%; height:100%; object-fit:cover; object-position:center top;}
+  .doctor-badge{position:absolute; left:14px; bottom:14px; background:rgba(247,243,236,0.95); border-radius:14px; padding:10px 14px;}
+  .doctor-badge b{display:block; font-size:22px; color:var(--green-dark); line-height:1;}
+  .doctor-badge span{font-size:12px; font-weight:600; opacity:0.7;}
+  .doctor h2{font-size:clamp(24px,5vw,32px);}
+  .doctor-spec{font-size:14px; font-weight:700; color:var(--green); margin:6px 0 16px;}
+  .doctor p{font-size:15px; opacity:0.78; margin-bottom:16px; max-width:54ch;}
+  .facts{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px;}
+  .fact{background:#fff; border:1px solid var(--line); border-radius:14px; padding:12px 14px; font-size:13.5px; font-weight:600;}
+  .fact b{display:block; font-size:12px; font-weight:700; opacity:0.55; margin-bottom:2px;}
+
+  /* 4. KAVSAR + JOYLASHUV */
+  .about{background:var(--green-dark); color:var(--ivory);}
+  .about .eyebrow{background:rgba(216,183,106,0.18); color:var(--gold);}
+  .about h2{color:#fff;}
+  .about-grid{display:grid; grid-template-columns:1fr; gap:28px;}
+  @media(min-width:760px){ .about-grid{grid-template-columns:1fr 1fr;} }
+  .about-text{font-size:15px; opacity:0.8; margin:10px 0 22px; max-width:46ch;}
+  .info-row{padding:14px 0; border-top:1px solid rgba(255,255,255,0.12);}
+  .info-row .label{font-size:12px; font-weight:700; opacity:0.55; margin-bottom:2px;}
+  .info-row .value{font-size:16px; font-weight:600;}
+  .info-row a{text-decoration:none;}
+  .map-box{border-radius:20px; overflow:hidden; aspect-ratio:1/1; border:1px solid rgba(255,255,255,0.15);}
+  .map-box iframe{width:100%; height:100%; border:0;}
+  .about .btn{margin-top:18px;}
+  footer{padding:22px 0 30px; font-size:12.5px; background:var(--green-dark); color:var(--ivory);}
+  .footer-inner{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; border-top:1px solid rgba(255,255,255,0.12); padding-top:18px; opacity:0.55;}
+  @media(min-width:760px){ .ai-bubble{right:calc(50% - 280px); bottom:96px;} }
+  .photo-hero .doc-img.cosmo{transform:translateX(-42%); height:80%;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <div class="logo">Kavsar Clinic</div>
+    <a href="tel:+998916695445" style="font-weight:700; font-size:14px; text-decoration:none; color:var(--green);">+998 91 669 54 45</a>
+  </div>
+</header>
+
+<!-- 0. RASMLI HERO -->
+<section class="photo-hero" style="padding:0">
+  <div class="hero-badge">
+    <div class="exp"><b>✦</b><span>yuz va<br>tana</span></div>
+    <div class="who-doc"><b>Sayyora Rustamovna</b><span>Kosmetolog</span></div>
+  </div>
+  <!-- Surat: sayyora.webp yuklansa avtomatik chiqadi, bo'lmasa belgi turadi -->
+  <div class="ph-face" id="ph-face" aria-hidden="true"><b>SR</b><span>Kosmetolog</span></div>
+  <img class="doc-img cosmo" src="sayyora.webp" alt="Kosmetolog Sayyora Rustamovna" onload="document.getElementById('ph-face').style.display='none'" onerror="this.style.display='none'">
+  <div class="hero-bottom">
+    <div class="hero-banner" id="slider">
+      <div class="slides">
+        <div class="slide on" data-offer="cosmo_laser">
+          <div class="slide-tag">LAZER EPILYATSIYA</div>
+          <h1>Ortiqcha tuklarga <em>xayr</em> deng</h1>
+          <div class="slide-price"><span class="pv">290 000 so'mdan boshlab</span> <small>Basic · Standart · Full</small></div>
+        </div>
+        <div class="slide" data-offer="cosmo_face">
+          <div class="slide-tag">YUZ PARVARISHI</div>
+          <h1>Toza va yorqin teri — <em>yuz chistkasi</em></h1>
+          <div class="slide-price"><span class="pv">249 000 so'mdan boshlab</span> <small>Basic · Standart · Full</small></div>
+        </div>
+        <div class="slide" data-offer="cosmo_face">
+          <div class="slide-tag">SODIQLIK DASTURI</div>
+          <h1>Har 6 ta tashrifdan keyin yuz chistkasi <em>bepul</em></h1>
+          <div class="slide-price"><small style="font-size:14px">Tashriflar avtomatik hisoblanadi — kartochka kerak emas</small></div>
+        </div>
+      </div>
+      <div class="slider-foot">
+        <div class="dots" id="dots"><button class="on" aria-label="1-slayd"></button><button aria-label="2-slayd"></button><button aria-label="3-slayd"></button></div>
+        <a href="#yozilish" class="hero-cta" id="slide-cta">Ro'yxatdan o'tish</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. ZAPIS FORMASI -->
+<section class="form-section" id="yozilish">
+  <div class="wrap">
+    <div class="form-card">
+      <form id="lead-form" novalidate>
+        <h2>Ro'yxatdan o'tish</h2>
+        <p class="sec-sub">Raqamingizni qoldiring — administratorimiz qo'ng'iroq qilib, qulay vaqtni kelishib oladi.</p>
+
+        <div class="opt-label">Nima uchun kelmoqchisiz?</div>
+        <div class="opts">
+          <label class="opt" data-offer="cosmo_laser">
+            <input type="radio" name="offer" value="cosmo_laser">
+            <span class="radio"></span>
+            <span><span class="opt-title">Lazer epilyatsiya</span><span class="opt-desc" style="display:block">290 000 so'mdan</span></span>
+          </label>
+          <label class="opt" data-offer="cosmo_face">
+            <input type="radio" name="offer" value="cosmo_face">
+            <span class="radio"></span>
+            <span><span class="opt-title">Yuz chistkasi</span><span class="opt-desc" style="display:block">249 000 so'mdan</span></span>
+          </label>
+          <label class="opt" data-offer="cosmo_other">
+            <input type="radio" name="offer" value="cosmo_other">
+            <span class="radio"></span>
+            <span><span class="opt-title">Boshqa muolaja</span><span class="opt-desc" style="display:block">Botoks, filler, gipergidroz, PDRN va boshqalar</span></span>
+          </label>
+          <label class="opt" data-offer="cosmo_visit">
+            <input type="radio" name="offer" value="cosmo_visit">
+            <span class="radio"></span>
+            <span><span class="opt-title">Kosmetolog maslahati</span><span class="opt-desc" style="display:block">Qaysi muolaja kerakligini bilmasangiz</span></span>
+          </label>
+        </div>
+
+        <input class="field" type="text" id="lf-name" placeholder="Ismingiz" autocomplete="name">
+        <input class="field" type="tel" id="lf-phone" value="+998 " placeholder="+998 90 123 45 67" autocomplete="tel" inputmode="tel">
+        <button type="submit" class="btn btn-gold submit">Ro'yxatdan o'tish</button>
+        <div id="form-status" class="form-status"></div>
+        <div class="privacy">Ma'lumotlaringiz faqat qabulni kelishish uchun ishlatiladi</div>
+      </form>
+
+      <div class="form-success" id="form-success">
+        <div class="check">✓</div>
+        <h3>Rahmat, arizangiz qabul qilindi!</h3>
+        <p>Administratorimiz tez orada siz bilan bog'lanadi. Xohlasangiz, qabul vaqtini hozir Telegram orqali o'zingiz tanlashingiz mumkin.</p>
+        <a href="https://t.me/kavsar_clinic_bot?start=booking" class="btn" target="_blank">Telegram orqali vaqt tanlash →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2.5 NARXLAR -->
+<section class="prices">
+  <div class="wrap">
+    <div class="eyebrow">Xizmatlar va narxlar</div>
+    <div class="price-list">
+      <div class="pr"><div><b>Lazer epilyatsiya</b><small>Basic · Standart · Full</small></div><div class="p">290 000 – 995 000 so'm</div></div>
+      <div class="pr"><div><b>Yuz chistkasi</b><small>Basic · Standart · Full</small></div><div class="p">249 000 – 449 000 so'm</div></div>
+      <div class="pr"><div><b>Karboksiterapiya</b><small>Teri yangilanishi</small></div><div class="p">330 000 so'm</div></div>
+      <div class="pr"><div><b>Ko'z atrofiga EYE PDRN</b><small>Vitaminli muolaja</small></div><div class="p">350 000 so'm</div></div>
+      <div class="pr"><div><b>Botoks</b><small>Basic · Standart · Full</small></div><div class="p">$55 – $145</div></div>
+      <div class="pr"><div><b>Gipergidroz</b><small>Ortiqcha terlashga qarshi</small></div><div class="p">$95 – $145</div></div>
+      <div class="pr"><div><b>Labga filler</b><small>&nbsp;</small></div><div class="p">$95</div></div>
+    </div>
+    <div class="loyal">
+      <div class="n">6<small>TASHRIF</small></div>
+      <div><b>Sodiqlik dasturi</b><span>Har 6 ta kosmetologiya tashrifidan keyin yuz chistkasi — bepul. Hisob avtomatik yuritiladi.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. SHIFOKOR -->
+<section>
+  <div class="wrap doctor">
+    <div class="doctor-photo">
+      <img src="sayyora.webp" alt="Sayyora Rustamovna">
+      <div class="doctor-badge"><b>✦</b><span>Kosmetolog</span></div>
+    </div>
+    <div>
+      <div class="eyebrow">Sizning kosmetologingiz</div>
+      <h2>Sayyora Rustamovna</h2>
+      <div class="doctor-spec">Kosmetolog</div>
+      <p>Yuz va teri parvarishi, lazer epilyatsiya, botoks, filler va boshqa estetik muolajalarni o'tkazadi. Har bir muolaja teringiz holatiga qarab tanlanadi.</p>
+      <div class="facts">
+        <div class="fact"><b>Yo'nalish</b>Yuz · teri · lazer</div>
+        <div class="fact"><b>Sodiqlik</b>6-tashrifdan keyin bepul</div>
+        <div class="fact"><b>Qabul kunlari</b>Dushanba – Shanba</div>
+        <div class="fact"><b>Ish vaqti</b>09:00 – 19:00</div>
+      </div>
+      <a href="#yozilish" class="btn">Qabulga yozilish</a>
+    </div>
+  </div>
+</section>
+
+<!-- 4. KAVSAR + JOYLASHUV -->
+<section class="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="eyebrow">Kavsar Clinic</div>
+      <h2>Natija gapiradi!</h2>
+      <p class="about-text">Farg'onadagi zamonaviy jihozlangan klinika. Lazer va estetik muolajalar uchun yangi avlod uskunalari.</p>
+      <div class="info-row"><div class="label">Manzil</div><div class="value">Farg'ona shahar, Yangi Turon ko'chasi, 15/36</div></div>
+      <div class="info-row"><div class="label">Telefon</div><div class="value"><a href="tel:+998916695445">+998 91 669 54 45</a></div></div>
+      <div class="info-row"><div class="label">Ish vaqti</div><div class="value">Dushanba – Shanba, 09:00 – 19:00<br><span style="opacity:.7;font-size:14px">Yakshanba — dam olish kuni</span></div></div>
+      <a href="#yozilish" class="btn btn-gold">Ro'yxatdan o'tish</a>
+    </div>
+    <div class="map-box">
+      <iframe src="https://yandex.uz/map-widget/v1/?ll=71.807108%2C40.370804&z=16&pt=71.807108,40.370804,pm2rdm" loading="lazy" title="Kavsar Clinic xaritada"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© 2026 Kavsar Clinic</div>
+    <div>Farg'ona</div>
+  </div>
+</footer>
+
+<script>
+  // ===== SOZLAMALAR (kerak bo'lganda shu yerni o'zgartiring) =====
+  const API = 'https://kavsar-ai-crm.onrender.com';
+  const META_PIXEL_ID = '';      // Meta Pixel ID (bo'sh bo'lsa Pixel o'chiq)
+
+  // Serverni oldindan "uyg'otib" qo'yamiz — forma yuborilganda kutib qolmasligi uchun
+  fetch(API + '/health', { mode: 'no-cors' }).catch(() => {});
+
+
+  // Meta Pixel
+  if (META_PIXEL_ID) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', META_PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+
+  let selectedOffer = null;
+  let selectedWho = null;
+
+  function pickOffer(key) {
+    selectedOffer = key;
+    document.querySelectorAll('.opt').forEach(o => {
+      const on = o.getAttribute('data-offer') === key;
+      o.classList.toggle('active', on);
+      o.querySelector('input').checked = on;
+    });
+    
+  }
+
+  document.querySelectorAll('.opt').forEach(o => {
+    o.addEventListener('click', () => pickOffer(o.getAttribute('data-offer')));
+  });
+
+  document.querySelectorAll('#who button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      selectedWho = btn.getAttribute('data-who');
+      document.querySelectorAll('#who button').forEach(x => x.classList.toggle('active', x === btn));
+    });
+  });
+
+  document.getElementById('lead-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const name = document.getElementById('lf-name').value.trim();
+    const phone = document.getElementById('lf-phone').value.trim();
+    const statusEl = document.getElementById('form-status');
+    const btn = e.target.querySelector('button[type=submit]');
+
+    const fail = (msg) => { statusEl.textContent = msg; statusEl.className = 'form-status err'; };
+    if (!selectedOffer) return fail('Iltimos, variantlardan birini tanlang');
+    if (!name) return fail('Iltimos, ismingizni kiriting');
+    if (phone.replace(/\D/g, '').length < 12) return fail('Iltimos, telefon raqamingizni to\'liq kiriting');
+
+    statusEl.textContent = 'Yuborilmoqda...';
+    statusEl.className = 'form-status';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(API + '/api/landing-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name, phone, doctorId: 1,
+          offer: selectedOffer,
+          offerDetail: null,
+        }),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error || 'Xatolik');
+      if (window.fbq) fbq('track', 'Lead', { content_name: selectedOffer });
+      document.getElementById('lead-form').style.display = 'none';
+      document.getElementById('form-success').classList.add('show');
+    } catch (err) {
+      fail('Xatolik yuz berdi — qaytadan urinib ko\'ring yoki +998 91 669 54 45 ga qo\'ng\'iroq qiling');
+      btn.disabled = false;
+    }
+  });
+</script>
+
+<script>
+  (function(){
+    const slides = [...document.querySelectorAll('.slide')];
+    const dots = [...document.querySelectorAll('#dots button')];
+    let i = 0, timer;
+    function show(n){
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle('on', k === i));
+      dots.forEach((d, k) => d.classList.toggle('on', k === i));
+    }
+    function auto(){ clearInterval(timer); timer = setInterval(() => show(i + 1), 4500); }
+    dots.forEach((d, k) => d.addEventListener('click', () => { show(k); auto(); }));
+    // Barmoq bilan surish
+    let x0 = null;
+    const el = document.getElementById('slider');
+    el.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    el.addEventListener('touchend', e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) { show(i + (dx < 0 ? 1 : -1)); auto(); }
+      x0 = null;
+    });
+    // Tugma — joriy aksiyani formada tanlab beradi
+    document.getElementById('slide-cta').addEventListener('click', () => pickOffer(slides[i].dataset.offer));
+    auto();
+  })();
+</script>
+
+<!-- PASTKI PANEL -->
+<a href="https://t.me/kavsar_clinic_bot" target="_blank" class="ai-bubble" id="ai-bubble">
+  <span class="ai-ico">🤖</span>AI-yordamchi: savol bering<span class="x" id="ai-x">×</span>
+</a>
+<nav class="bottom-bar">
+  <a href="tel:+998916695445" class="bb-round bb-phone" aria-label="Qo'ng'iroq qilish">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.1 9.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="#yozilish" class="bb-main">Ro'yxatdan o'tish</a>
+  <a href="https://t.me/kavsar_clinic_bot" target="_blank" class="bb-round bb-ai" aria-label="AI-yordamchi">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 17h5"/></svg>
+    <span class="bb-dot">1</span>
+  </a>
+</nav>
+<script>
+  (function(){
+    const b = document.getElementById('ai-bubble');
+    document.getElementById('ai-x').addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); b.classList.add('hide'); });
+    setTimeout(() => b.classList.add('hide'), 9000); // 9 soniyadan keyin o'zi yashirinadi
+    // Forma ko'rinib turganda pufakchani yashiramiz
+    const f = document.getElementById('yozilish');
+    if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) b.classList.add('hide'); }), { threshold: 0.35 }).observe(f);
+  })();
+</script>
+</body>
+</html>
