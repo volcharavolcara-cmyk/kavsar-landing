@@ -207,7 +207,7 @@
     <div class="exp"><b>14</b><span>yillik<br>tajriba</span></div>
     <div class="who-doc"><b>Oybek Alisherovich</b><span>LOR shifokor</span></div>
   </div>
-  <img class="doc-img" src="oybek.webp" alt="LOR shifokor Oybek Alisherovich">
+  <img data-face="0.40" class="doc-img" src="oybek.webp" alt="LOR shifokor Oybek Alisherovich">
   <div class="deadline-hero"><span class="dot"></span>31-oktyabrgacha</div>
   <div class="hero-bottom">
     <div class="hero-banner" id="slider">
@@ -464,6 +464,49 @@
     // Forma ko'rinib turganda pufakchani yashiramiz
     const f = document.getElementById('yozilish');
     if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) b.classList.add('hide'); }), { threshold: 0.35 }).observe(f);
+  })();
+</script>
+<script>
+  /* Telefonda rasm ma'lumotlar ostida qolmasin: yuz har doim belgi (tepada) va banner (pastda) orasida ko'rinadi */
+  (function () {
+    const hero = document.querySelector('.photo-hero');
+    const img = hero && hero.querySelector('.doc-img');
+    const badge = hero && hero.querySelector('.hero-badge');
+    const bottom = hero && hero.querySelector('.hero-bottom');
+    const slidesBox = hero && hero.querySelector('.slides');
+    if (!hero || !img || !badge || !bottom) return;
+    const FACE = parseFloat(img.dataset.face || '0.40'); // rasm balandligining qaysi qismigacha yuz (iyak) tushadi
+
+    function layout() {
+      if (window.innerWidth > 760) { // kompyuterda — oldingi ko'rinish
+        hero.style.height = ''; img.style.top = ''; img.style.height = ''; img.style.bottom = '';
+        if (slidesBox) slidesBox.style.minHeight = '';
+        return;
+      }
+      // Banner balandligi eng uzun slayd bo'yicha — slayd almashganda sahifa sakramasin
+      if (slidesBox) {
+        let maxH = 0;
+        slidesBox.querySelectorAll('.slide').forEach(s => {
+          const was = s.style.position; s.style.position = 'relative';
+          maxH = Math.max(maxH, s.offsetHeight);
+          s.style.position = was;
+        });
+        slidesBox.style.minHeight = maxH + 'px';
+      }
+      const top = badge.offsetTop + badge.offsetHeight + 8;   // belgidan pastda boshlanadi
+      const bannerH = bottom.offsetHeight + 18;               // banner + pastki bo'shliq
+      const zone = Math.max(210, Math.ceil(bannerH * FACE / (1 - FACE)) + 10); // yuz uchun ochiq joy
+      const heroH = top + zone + bannerH;
+      hero.style.height = heroH + 'px';
+      hero.style.minHeight = '0';
+      img.style.top = top + 'px';
+      img.style.bottom = 'auto';
+      img.style.height = (heroH - top) + 'px';
+    }
+    layout();
+    img.addEventListener('load', layout);
+    window.addEventListener('resize', layout);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
   })();
 </script>
 </body>
